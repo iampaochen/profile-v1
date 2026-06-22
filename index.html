@@ -239,6 +239,33 @@
       align-items: center;
     }
 
+    .video-section {
+      display: grid;
+      gap: 28px;
+    }
+
+    .video-copy {
+      max-width: 720px;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      background: #111;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     blockquote {
       margin: 0;
       color: var(--ink);
@@ -341,6 +368,7 @@
     <nav class="nav" aria-label="主要導覽">
       <a href="#about">關於</a>
       <a href="#strengths">亮點</a>
+      <a href="#hymns">詩歌集</a>
       <a href="#contact">聯絡</a>
     </nav>
   </header>
@@ -404,7 +432,28 @@
       </div>
     </section>
 
-    <section class="section alt" id="contact">
+    <section class="section alt" id="hymns">
+      <div class="wrap video-section">
+        <div class="video-copy">
+          <p class="section-label">我喜歡的詩歌集</p>
+          <h2>珍藏一首喜歡的詩歌。</h2>
+          <p>
+            這裡收錄我喜歡的詩歌影片，讓旋律與文字陪伴每一次安靜的時刻。
+          </p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/xbnG_8iDoew"
+            title="我喜歡的詩歌影片"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
       <div class="wrap contact">
         <div>
           <p class="section-label">聯絡</p>
