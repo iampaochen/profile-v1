@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>藺寶珍｜個人網頁</title>
+  <meta name="description" content="藺寶珍的個人介紹頁面">
+  <style>
+    :root {
+      --ink: #241f1d;
+      --muted: #665f5b;
+      --paper: #fffaf5;
+      --cream: #f7eee4;
+      --petal: #b8242e;
+      --leaf: #326a4a;
+      --line: rgba(36, 31, 29, 0.14);
+      --shadow: 0 22px 60px rgba(36, 31, 29, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px clamp(18px, 4vw, 56px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0));
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: clamp(14px, 3vw, 34px);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav a {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav a:hover {
+      border-color: currentColor;
+    }
+
+    .hero {
+      min-height: 86vh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      padding: 104px clamp(22px, 6vw, 86px) 72px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("profile-photo.jpg");
+      background-size: cover;
+      background-position: center 42%;
+      transform: scale(1.01);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(20, 17, 15, 0.74) 0%, rgba(20, 17, 15, 0.36) 45%, rgba(20, 17, 15, 0.02) 100%),
+        linear-gradient(0deg, rgba(20, 17, 15, 0.34) 0%, rgba(20, 17, 15, 0) 46%);
+    }
+
+    .hero-content {
+      width: min(760px, 100%);
+      color: #fff;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(48px, 9vw, 112px);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .hero-text {
+      max-width: 610px;
+      margin: 24px 0 34px;
+      font-size: clamp(18px, 2.1vw, 25px);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .button.primary {
+      border-color: #fff;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    main {
+      background: var(--paper);
+    }
+
+    .section {
+      padding: clamp(54px, 8vw, 104px) clamp(22px, 6vw, 86px);
+    }
+
+    .section.alt {
+      background: var(--cream);
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: clamp(34px, 7vw, 84px);
+      align-items: center;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--petal);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      font-size: clamp(31px, 4.2vw, 56px);
+      line-height: 1.14;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 68% center;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .highlight {
+      min-height: 170px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.48);
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .quote-band {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
+      gap: clamp(28px, 6vw, 72px);
+      align-items: center;
+    }
+
+    blockquote {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 750;
+      line-height: 1.28;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(260px, 0.25fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .contact-list span {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 24px clamp(22px, 6vw, 86px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .site-header {
+        position: absolute;
+        padding: 16px 20px;
+      }
+
+      .nav {
+        gap: 14px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 94px 22px 52px;
+      }
+
+      .hero::before {
+        background-position: 62% center;
+      }
+
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(20, 17, 15, 0.68), rgba(20, 17, 15, 0.24)),
+          linear-gradient(0deg, rgba(20, 17, 15, 0.42), rgba(20, 17, 15, 0.08));
+      }
+
+      .intro,
+      .quote-band,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        aspect-ratio: 16 / 11;
+        object-position: 60% center;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 16px;
+      }
+
+      .nav a:nth-child(2) {
+        display: none;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="網站導覽">
+    <a class="brand" href="#top">藺寶珍</a>
+    <nav class="nav" aria-label="主要導覽">
+      <a href="#about">關於</a>
+      <a href="#strengths">亮點</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <p class="eyebrow">Personal Profile</p>
+      <h1>藺寶珍</h1>
+      <p class="hero-text">以真誠、細心與穩定的行動，留下值得信任的印象。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#about">認識我</a>
+        <a class="button" href="#contact">聯絡資訊</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="about">
+      <div class="wrap intro">
+        <div>
+          <p class="section-label">關於我</p>
+          <h2>溫暖待人，踏實做事。</h2>
+          <p>
+            我重視人與人之間的信任，也相信每一件事都值得用心完成。
+            無論是生活、工作或與他人的互動，我都希望以清楚的溝通、穩定的態度，
+            帶來舒服而可靠的感受。
+          </p>
+        </div>
+        <img class="portrait" src="profile-photo.jpg" alt="藺寶珍個人照片">
+      </div>
+    </section>
+
+    <section class="section alt" id="strengths">
+      <div class="wrap">
+        <p class="section-label">個人亮點</p>
+        <h2>把細節照顧好，也把心意放進去。</h2>
+        <div class="highlights">
+          <article class="highlight">
+            <strong>親切真誠</strong>
+            <p>以自然、溫和的方式與人交流，讓合作與相處更有信任感。</p>
+          </article>
+          <article class="highlight">
+            <strong>細心負責</strong>
+            <p>留意小地方，也願意把事情整理清楚，讓成果更穩定。</p>
+          </article>
+          <article class="highlight">
+            <strong>持續成長</strong>
+            <p>保持好奇與學習的心，面對新挑戰時願意一步一步前進。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap quote-band">
+        <blockquote>「把每一次相遇都當成值得珍惜的緣分。」</blockquote>
+        <p>
+          這個頁面可以延伸成履歷、作品集、活動介紹或社群名片，
+          讓更多人快速認識藺寶珍。
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="wrap contact">
+        <div>
+          <p class="section-label">聯絡</p>
+          <h2>歡迎留下訊息，讓交流從這裡開始。</h2>
+        </div>
+        <div class="contact-list" aria-label="聯絡資訊">
+          <div><span>Email</span><br>paochen@ntin.edu.tw</div>
+          <div><span>Phone</span><br>06-2110600 ext 275</div>
+          <div><span>Location</span><br>Taiwan</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 藺寶珍. All rights reserved.
+  </footer>
+</body>
+</html>
